@@ -1,83 +1,267 @@
-import "./Header.css"
+import "./Header.css";
 
 function Header() {
     return (
         <header className="header">
-            <div className="img">
-                <img src="profile.jpg" className="imgM" alt="profile" />
-            </div>
-            <h1 className="name">Temur Alisherov</h1>
 
-            <div className="socials">
+            {/* Background decorations */}
+            <div className="bg-glow bg-glow-1"></div>
+            <div className="bg-glow bg-glow-2"></div>
+            <div className="grid-overlay"></div>
 
-                {/* 1-qator: LinkedIn, GitHub, Instagram, YouTube */}
-                <ul className="social-row">
-                    <li className="icon-content">
-                        <a data-social="linkedin" aria-label="LinkedIn"
-                            href="https://www.linkedin.com/in/temurbek-alisherov-42a5b23b3?utm_source=share_via&utm_content=profile&utm_medium=member_android">
-                            <div className="filled"></div>
-                            <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li className="icon-content">
-                        <a data-social="github" aria-label="GitHub" href="https://github.com/TemurbekCode">
-                            <div className="filled"></div>
-                            <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li className="icon-content">
-                        <a data-social="instagram" aria-label="Instagram"
-                            href="https://www.instagram.com/alisherov.dev?igsh=MXg2aDB1M3RqdXdvcw==">
-                            <div className="filled"></div>
-                            <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
-                            </svg>
-                        </a>
-                    </li>
-                    <li className="icon-content">
-                        <a data-social="youtube" aria-label="Youtube"
-                            href="https://youtube.com/@timdeev?si=8KhX3a8pN3f2Yf_M">
-                            <div className="filled"></div>
-                            <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z" />
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
+            <main className="profile-card">
 
-                {/* 2-qator: Telegram + Globe */}
-                <ul className="social-row">
-                    <li className="icon-content">
-                        <a href="https://t.me/alisherovdevs" aria-label="Telegram" data-social="telegram">
-                            <div className="filled"></div>
-                            <svg version="1.1" viewBox="0 0 100 100">
-                                <path d="M95,9.9c-1.3-1.1-3.4-1.2-7-0.1c0,0,0,0,0,0c-2.5,0.8-24.7,9.2-44.3,17.3c-17.6,7.3-31.9,13.7-33.6,14.5  c-1.9,0.6-6,2.4-6.2,5.2c-0.1,1.8,1.4,3.4,4.3,4.7c3.1,1.6,16.8,6.2,19.7,7.1c1,3.4,6.9,23.3,7.2,24.5c0.4,1.8,1.6,2.8,2.2,3.2  c0.1,0.1,0.3,0.3,0.5,0.4c0.3,0.2,0.7,0.3,1.2,0.3c0.7,0,1.5-0.3,2.2-0.8c3.7-3,10.1-9.7,11.9-11.6c7.9,6.2,16.5,13.1,17.3,13.9  c0,0,0.1,0.1,0.1,0.1c1.9,1.6,3.9,2.5,5.7,2.5c0.6,0,1.2-0.1,1.8-0.3c2.1-0.7,3.6-2.7,4.1-5.4c0-0.1,0.1-0.5,0.3-1.2  c3.4-14.8,6.1-27.8,8.3-38.7c2.1-10.7,3.8-21.2,4.8-26.8c0.2-1.4,0.4-2.5,0.5-3.2C96.3,13.5,96.5,11.2,95,9.9z M30,58.3l47.7-31.6  c0.1-0.1,0.3-0.2,0.4-0.3c0,0,0,0,0,0c0.1,0,0.1-0.1,0.2-0.1c0.1,0,0.1,0,0.2-0.1c-0.1,0.1-0.2,0.4-0.4,0.6L66,38.1  c-8.4,7.7-19.4,17.8-26.7,24.4c0,0,0,0,0,0.1c0,0-0.1,0.1-0.1,0.1c0,0,0,0.1-0.1,0.1c0,0.1,0,0.1-0.1,0.2c0,0,0,0.1,0,0.1  c0,0,0,0,0,0.1c-0.5,5.6-1.4,15.2-1.8,19.5c0,0,0,0,0-0.1C36.8,81.4,31.2,62.3,30,58.3z" fill="currentColor"></path>
-                            </svg>
-                        </a>
-                    </li>
-                    <li className="icon-content">
-                        <a className="web-link" href="https://portfolio-temurbek.netlify.app/">
-                            <img src="globe.png" className="globe" alt="portfolio" />
-                        </a>
-                    </li>
-                </ul>
+                {/* Profile */}
+                <div className="profile-wrapper">
+                    <div className="profile-ring">
+                        <img
+                            src="profile.jpg"
+                            className="imgM"
+                            alt="Temur Alisherov"
+                        />
+                    </div>
 
+                    <span className="online-dot"></span>
+                </div>
+
+                {/* Name */}
+                <h1 className="name">
+                    Temur Alisherov
+                </h1>
+
+                <p className="role">
+                    Software Developer <span>•</span>  Builder
+                </p>
+
+                {/* Socials */}
+                <div className="socials">
+
+                    {/* Row 1 */}
+                    <ul className="social-row">
+
+                        {/* LinkedIn */}
+                        <li className="icon-content">
+                            <a
+                                data-social="linkedin"
+                                aria-label="LinkedIn"
+                                href="https://www.linkedin.com/in/temurbek-alisherov-42a5b23b3"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.68H9.35V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V8.99h3.56v11.46zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
+                                </svg>
+                            </a>
+                        </li>
+
+                        {/* GitHub */}
+                        <li className="icon-content">
+                            <a
+                                data-social="github"
+                                aria-label="GitHub"
+                                href="https://github.com/TemurbekCode"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.15c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.73.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
+                                </svg>
+                            </a>
+                        </li>
+
+                        {/* Instagram */}
+                        <li className="icon-content">
+                            <a
+                                data-social="instagram"
+                                aria-label="Instagram"
+                                href="https://www.instagram.com/talshrv"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="1.8"
+                                >
+                                    <rect
+                                        x="3"
+                                        y="3"
+                                        width="18"
+                                        height="18"
+                                        rx="5"
+                                    />
+
+                                    <circle
+                                        cx="12"
+                                        cy="12"
+                                        r="4"
+                                    />
+
+                                    <circle
+                                        cx="17.5"
+                                        cy="6.5"
+                                        r="1"
+                                        fill="currentColor"
+                                        stroke="none"
+                                    />
+                                </svg>
+                            </a>
+                        </li>
+
+                        {/* YouTube */}
+                        <li className="icon-content">
+                            <a
+                                data-social="youtube"
+                                aria-label="YouTube"
+                                href="#"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M23.5 6.2a3 3 0 0 0-2.11-2.12C19.52 3.5 12 3.5 12 3.5s-7.52 0-9.39.58A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.11 2.12c1.87.58 9.39.58 9.39.58s7.52 0 9.39-.58a3 3 0 0 0 2.11-2.12A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z" />
+                                </svg>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    {/* Row 2 */}
+                    <ul className="social-row">
+
+                        {/* Telegram */}
+                        <li className="icon-content">
+                            <a
+                                data-social="telegram"
+                                aria-label="Telegram"
+                                href="https://t.me/talshrvy"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="currentColor"
+                                >
+                                    <path d="M21.8 3.1 2.9 10.4c-1.29.52-1.28 1.24-.23 1.56l4.85 1.51 1.86 5.68c.23.63.12.88.78.88.51 0 .73-.23.99-.5l2.36-2.29 4.91 3.63c.9.5 1.55.24 1.78-.84l3.22-15.18c.34-1.33-.51-1.93-1.61-1.49zM8.27 13.14l10.95-6.9c.55-.33 1.05-.15.64.21l-8.86 7.99-.34 3.63-1.77-4.93-4.64-1.45 4.02-1.55z" />
+                                </svg>
+                            </a>
+                        </li>
+
+                        {/* WhatsApp */}
+                        <li className="icon-content">
+                            <a
+                                data-social="whatsapp"
+                                aria-label="WhatsApp"
+                                href="https://wa.me/YOUR_PHONE_NUMBER"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth="1.8"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                >
+                                    <path d="M20.5 3.5A11.3 11.3 0 0 0 12.1 0C5.9 0 0.9 5 0.9 11.2c0 2 .5 4 1.5 5.7L.8 23.8l7-1.8a11.2 11.2 0 0 0 4.3.9h.1c6.2 0 11.2-5 11.2-11.2 0-3-1.1-6-2.9-8.2z" />
+
+                                    <path d="M8.2 6.8c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.8 1.9c.1.3.1.5-.1.7l-.7.8c-.1.1-.1.3 0 .5.5.9 1.2 1.6 2 2.1.2.1.4.2.5 0l.8-.9c.2-.2.4-.2.7-.1l1.8.9c.3.1.4.3.4.6 0 .8-.4 1.5-.9 1.8-.5.3-1.2.4-2 .2-1.1-.3-2.5-1-3.8-2.2-1.3-1.2-2.2-2.6-2.5-3.7-.3-1-.2-1.8.2-2.5.2-.4.6-.7 1.1-.7z" />
+                                </svg>
+                            </a>
+                        </li>
+
+                        {/* Portfolio */}
+                        <li className="icon-content">
+                            <a
+                                className="web-link"
+                                href="https://portfolio-temurbek.netlify.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="Portfolio"
+                            >
+                                <img
+                                    src="web.png"
+                                    className="globe"
+                                    alt="Portfolio"
+                                />
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                {/* Contact */}
                 <div className="contactt">
-                    <a href="mailto:temurbekalisherov82@gmail.com" className="contact">
-                        Contact Me Here 🫱🏼‍🫲🏼
+                    <a
+                        href="mailto:temurbekalisherov82@gmail.com"
+                        className="contact"
+                    >
+                        <span>Let's Connect</span>
+
+                        {/* Mail icon */}
+                        <svg
+                            className="contact-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="1.8"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <rect
+                                x="3"
+                                y="5"
+                                width="18"
+                                height="14"
+                                rx="2"
+                            />
+
+                            <path d="m3 7 9 6 9-6" />
+                        </svg>
+
+                        <svg
+                            className="arrow-icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <path d="M5 12h14" />
+                            <path d="m13 6 6 6-6 6" />
+                        </svg>
                     </a>
                 </div>
 
-                <hr className="hr" />
+                {/* Divider */}
+                <div className="divider">
+                    <span></span>
+                </div>
 
-                <p className="p-head">"Don't rely on AI — build your own skills."</p>
-            </div>
+                {/* Quote */}
+                <p className="p-head">
+                    "Don't rely on AI — build your own skills."
+                </p>
+
+                <div className="bottom-label">
+                    <span className="status-dot"></span>
+                    Available for opportunities
+                </div>
+
+            </main>
+
         </header>
-    )
+    );
 }
 
 export default Header;

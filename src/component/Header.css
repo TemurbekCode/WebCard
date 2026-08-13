@@ -4,76 +4,314 @@
     box-sizing: border-box;
 }
 
+:root {
+    font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+body {
+    margin: 0;
+    background: #020617;
+}
+
+/* =====================================================
+   MAIN BACKGROUND
+===================================================== */
+
 .header {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(135deg, #020617, #0f172a);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+
+    position: relative;
+    overflow: hidden;
+
+    color: #fff;
+
+    background:
+        radial-gradient(circle at 50% 20%,
+            rgba(37, 99, 235, 0.13),
+            transparent 32%),
+        radial-gradient(circle at 20% 80%,
+            rgba(124, 58, 237, 0.09),
+            transparent 30%),
+        radial-gradient(circle at 80% 70%,
+            rgba(14, 165, 233, 0.07),
+            transparent 28%),
+        #020617;
+}
+
+/* =====================================================
+   BACKGROUND GLOWS
+===================================================== */
+
+.bg-glow {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+
+    opacity: 0.3;
+}
+
+.bg-glow-1 {
+    top: -180px;
+    left: -120px;
+
+    background: #2563eb;
+}
+
+.bg-glow-2 {
+    right: -150px;
+    bottom: -200px;
+
+    background: #7c3aed;
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px),
+        linear-gradient(90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px);
+
+    background-size: 50px 50px;
+
+    mask-image: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.7),
+            transparent 90%);
+
+    pointer-events: none;
+}
+
+/* =====================================================
+   GLASS CARD
+===================================================== */
+
+.profile-card {
+    width: min(100%, 580px);
+
+    min-height: 720px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 20px 40px;
-    color: #ffffff;
+
+    padding: 58px 40px 42px;
+
     position: relative;
-    overflow: hidden;
+    z-index: 2;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.075),
+            rgba(255, 255, 255, 0.025));
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    animation: cardAppear 0.8s ease forwards;
 }
 
-.header::before {
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* top glass highlight */
+
+.profile-card::before {
     content: "";
+
     position: absolute;
+
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 200px;
-    height: 100px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
-    filter: blur(20px);
+    left: 10%;
+
+    width: 80%;
+    height: 1px;
+
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.5),
+            transparent);
+}
+
+/* =====================================================
+   PROFILE
+===================================================== */
+
+.profile-wrapper {
+    position: relative;
+
+    margin-bottom: 24px;
+}
+
+.profile-ring {
+    width: 132px;
+    height: 132px;
+
+    padding: 4px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.8),
+            rgba(96, 165, 250, 0.8),
+            rgba(124, 58, 237, 0.6));
+
+    box-shadow:
+        0 0 30px rgba(59, 130, 246, 0.3),
+        0 0 80px rgba(59, 130, 246, 0.12);
 }
 
 .imgM {
-    width: 100px;
-    height: 100px;
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
     border-radius: 50%;
-    border: 2px solid #fff;
+
     object-fit: cover;
-    filter: brightness(70%);
-    box-shadow:
-        0 0 20px rgba(255, 255, 255, 0.6),
-        0 0 50px rgba(255, 255, 255, 0.3),
-        0 0 100px rgba(255, 255, 255, 0.2);
+
+    border: 3px solid #07111f;
+
+    filter: brightness(82%);
 }
+
+/* Online indicator */
+
+.online-dot {
+    position: absolute;
+
+    right: 5px;
+    bottom: 7px;
+
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    border: 3px solid #07111f;
+
+    box-shadow:
+        0 0 12px rgba(34, 197, 94, 0.8),
+        0 0 25px rgba(34, 197, 94, 0.3);
+}
+
+/* =====================================================
+   NAME
+===================================================== */
 
 .name {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 28px;
-    font-weight: 700;
+    font-size: clamp(30px, 5vw, 42px);
+
+    line-height: 1.1;
+
+    font-weight: 750;
+
+    letter-spacing: -1.5px;
+
     text-align: center;
-    text-shadow:
-        0 0 10px rgba(255, 255, 255, 0.8),
-        0 0 25px rgba(255, 255, 255, 0.5),
-        0 0 50px rgba(255, 255, 255, 0.3);
+
+    background:
+        linear-gradient(135deg,
+            #ffffff,
+            #cbd5e1);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    margin-bottom: 10px;
 }
 
-/* ===== SOCIALS ===== */
+.role {
+    font-size: 14px;
+
+    color: #94a3b8;
+
+    letter-spacing: 0.4px;
+
+    margin-bottom: 36px;
+
+    text-align: center;
+}
+
+.role span {
+    color: #60a5fa;
+
+    padding: 0 7px;
+}
+
+/* =====================================================
+   SOCIALS
+===================================================== */
+
 .socials {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    gap: 15px;
+
     width: 100%;
-    gap: 16px;
 }
 
-ul {
-    list-style: none;
-}
-
-/* Ikonkalar qatori */
 .social-row {
+    list-style: none;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
+
+    gap: 14px;
+
     padding: 0;
     margin: 0;
 }
@@ -82,144 +320,401 @@ ul {
     position: relative;
 }
 
+/* =====================================================
+   GLASS SOCIAL BUTTON
+===================================================== */
+
 .icon-content a {
-    position: relative;
-    overflow: hidden;
+    width: 56px;
+    height: 56px;
+
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    color: #4d4d4d;
-    background-color: #ffffff;
-    transition: all 0.3s ease-in-out;
+    justify-content: center;
+
+    position: relative;
+
+    border-radius: 17px;
+
+    color: #cbd5e1;
+
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.09),
+            rgba(255, 255, 255, 0.025));
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 8px 25px rgba(0, 0, 0, 0.2);
+
     text-decoration: none;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        background 0.25s ease;
 }
 
 .icon-content a:hover {
-    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 50%);
-    color: white;
+    transform: translateY(-6px);
+
+    color: #ffffff;
+
+    border-color: rgba(255, 255, 255, 0.25);
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.35);
 }
 
 .icon-content a svg {
+    width: 25px;
+    height: 25px;
+
     position: relative;
-    z-index: 1;
-    width: 28px;
-    height: 28px;
+    z-index: 2;
 }
 
-.icon-content a .filled {
-    position: absolute;
-    top: auto;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background-color: #000;
-    transition: all 0.3s ease-in-out;
+/* =====================================================
+   BRAND HOVERS
+===================================================== */
+
+.icon-content a[data-social="linkedin"]:hover {
+    color: #0a66c2;
+
+    box-shadow:
+        0 12px 35px rgba(10, 102, 194, 0.3);
 }
 
-.icon-content a:hover .filled {
-    height: 100%;
+.icon-content a[data-social="github"]:hover {
+    color: #ffffff;
+
+    box-shadow:
+        0 12px 35px rgba(255, 255, 255, 0.15);
 }
 
-/* Brand colors */
-.icon-content a[data-social="linkedin"] .filled {
-    background-color: #0274b3;
+.icon-content a[data-social="instagram"]:hover {
+    color: #e1306c;
+
+    box-shadow:
+        0 12px 35px rgba(225, 48, 108, 0.3);
 }
 
-.icon-content a[data-social="github"] .filled {
-    background-color: #24262a;
+.icon-content a[data-social="youtube"]:hover {
+    color: #ff0033;
+
+    box-shadow:
+        0 12px 35px rgba(255, 0, 51, 0.3);
 }
 
-.icon-content a[data-social="instagram"] .filled {
-    background: linear-gradient(45deg,
-            #405de6,
-            #5b51db,
-            #b33ab4,
-            #c135b4,
-            #e1306c,
-            #fd1f1f);
+.icon-content a[data-social="telegram"]:hover {
+    color: #29a9ea;
+
+    box-shadow:
+        0 12px 35px rgba(41, 169, 234, 0.3);
 }
 
-.icon-content a[data-social="youtube"] .filled {
-    background-color: #ff0000;
+.icon-content a[data-social="whatsapp"]:hover {
+    color: #25d366;
+
+    box-shadow:
+        0 12px 35px rgba(37, 211, 102, 0.3);
 }
 
-.icon-content a[data-social="telegram"] .filled {
-    background-color: #0088cc;
-}
+/* =====================================================
+   PORTFOLIO
+===================================================== */
 
-/* Globe (web) link */
 .web-link {
-    position: relative;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #ffffff;
-    transition: all 0.3s ease-in-out;
-    text-decoration: none;
 }
 
 .web-link:hover {
-    box-shadow: 3px 2px 45px 0px rgb(0 0 0 / 50%);
-    background-color: #1a1a2e;
+    color: #60a5fa;
 }
 
 .globe {
-    width: 56px;
-    height: 56px;
+    width: 30px;
+    height: 30px;
+
     object-fit: contain;
+
+    transition: transform 0.3s ease;
 }
 
-/* Contact button */
+.web-link:hover .globe {
+    transform: rotate(12deg) scale(1.08);
+}
+
+/* =====================================================
+   CONTACT BUTTON
+===================================================== */
+
 .contactt {
     width: 100%;
+
     display: flex;
     justify-content: center;
-    align-items: center;
-    margin-top: 6px;
+
+    margin-top: 38px;
 }
 
 .contact {
-    color: #fff;
-    text-decoration: none;
-    background-color: #000;
-    width: 85%;
-    max-width: 400px;
-    box-shadow: -5px 5px 2px #ffff00b7;
-    height: 45px;
+    width: min(100%, 390px);
+
+    min-height: 58px;
+
     display: flex;
-    border-radius: 10px;
-    justify-content: center;
     align-items: center;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    border: solid 2px #fff;
-    transition: transform 0.1s ease;
+    justify-content: center;
+
+    gap: 11px;
+
+    padding: 0 22px;
+
+    border-radius: 16px;
+
+    text-decoration: none;
+
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+
+    background:
+        linear-gradient(135deg,
+            rgba(59, 130, 246, 0.18),
+            rgba(124, 58, 237, 0.12));
+
+    border: 1px solid rgba(96, 165, 250, 0.3);
+
+    box-shadow:
+        0 10px 35px rgba(37, 99, 235, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.contact:active {
-    transform: scale(1.05);
+.contact:hover {
+    transform: translateY(-4px);
+
+    background:
+        linear-gradient(135deg,
+            rgba(59, 130, 246, 0.28),
+            rgba(124, 58, 237, 0.2));
+
+    border-color: rgba(96, 165, 250, 0.55);
+
+    box-shadow:
+        0 18px 45px rgba(37, 99, 235, 0.2),
+        0 0 25px rgba(59, 130, 246, 0.1);
 }
 
-.hr {
-    width: 90%;
-    max-width: 500px;
+.contact-icon {
+    width: 20px;
+    height: 20px;
+
+    color: #93c5fd;
+}
+
+.arrow-icon {
+    width: 17px;
+    height: 17px;
+
+    color: #60a5fa;
+
+    transition: transform 0.25s ease;
+}
+
+.contact:hover .arrow-icon {
+    transform: translateX(4px);
+}
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.divider {
+    width: 100%;
+
+    margin: 40px 0 25px;
+
+    display: flex;
+    justify-content: center;
+}
+
+.divider span {
+    width: 75%;
     height: 1px;
-    background-color: #fff;
-    border: none;
-    margin: 20px 0;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(148, 163, 184, 0.3),
+            transparent);
 }
+
+/* =====================================================
+   QUOTE
+===================================================== */
 
 .p-head {
-    padding: 10px 0;
-    font-size: 1rem;
-    color: #fff;
+    max-width: 420px;
+
+    padding: 0 10px;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
     text-align: center;
+
     font-style: italic;
+
+    letter-spacing: 0.2px;
+}
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.bottom-label {
+    margin-top: 25px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 12px;
+
+    color: #64748b;
+
+    letter-spacing: 0.3px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+
+    box-shadow:
+        0 0 8px rgba(34, 197, 94, 0.8);
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .header {
+        padding: 20px 14px;
+    }
+
+    .profile-card {
+        min-height: auto;
+
+        padding: 42px 20px 35px;
+
+        border-radius: 26px;
+    }
+
+    .profile-ring {
+        width: 115px;
+        height: 115px;
+    }
+
+    .name {
+        font-size: 31px;
+    }
+
+    .role {
+        font-size: 13px;
+
+        margin-bottom: 28px;
+    }
+
+    .social-row {
+        gap: 10px;
+    }
+
+    .icon-content a {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 15px;
+    }
+
+    .icon-content a svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .contactt {
+        margin-top: 30px;
+    }
+
+    .contact {
+        min-height: 55px;
+
+        font-size: 14px;
+    }
+
+    .divider {
+        margin: 32px 0 22px;
+    }
+
+    .p-head {
+        font-size: 13px;
+    }
+}
+
+/* =====================================================
+   VERY SMALL DEVICES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .profile-card {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .social-row {
+        gap: 8px;
+    }
+
+    .icon-content a {
+        width: 47px;
+        height: 47px;
+    }
+
+    .name {
+        font-size: 28px;
+    }
 }
