@@ -112,7 +112,12 @@ body {
 /* =====================================================
    GLASS CARD
 ===================================================== */
+.icon-content a[data-social="tiktok"]:hover {
+    color: #fe2c55;
 
+    box-shadow:
+        0 12px 35px rgba(254, 44, 85, 0.3);
+}
 .profile-card {
     width: min(100%, 580px);
 

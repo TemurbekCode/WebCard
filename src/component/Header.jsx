@@ -115,19 +115,10 @@ function Header() {
                             </a>
                         </li>
 
-                        {/* YouTube */}
-                        <li className="icon-content">
-                            <a
-                                data-social="youtube"
-                                aria-label="YouTube"
-                                href="#"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path d="M23.5 6.2a3 3 0 0 0-2.11-2.12C19.52 3.5 12 3.5 12 3.5s-7.52 0-9.39.58A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.11 2.12c1.87.58 9.39.58 9.39.58s7.52 0 9.39-.58a3 3 0 0 0 2.11-2.12A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z" />
-                                </svg>
+                        {/* Tik Tok */}
+                        <li class="icon-content">
+                            <a href="https://www.tiktok.com/@alshrvt?_r=1&_t=ZS-99dZq5ftVaS" target="_blank" rel="noopener noreferrer" data-social="tiktok">
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-1.02-.9-1.66-2.2-1.66-3.64h-3.4v13.7c0 1.68-1.36 3.04-3.04 3.04a3.04 3.04 0 0 1-3.04-3.04 3.04 3.04 0 0 1 3.04-3.04c.32 0 .62.05.9.13v-3.44a6.4 6.4 0 0 0-.9-.06A6.46 6.46 0 0 0 2 15.9 6.46 6.46 0 0 0 8.46 22.4 6.46 6.46 0 0 0 14.9 15.9V9.13a8.4 8.4 0 0 0 4.9 1.57V7.3a5 5 0 0 1-3.2-1.48z" /></svg>
                             </a>
                         </li>
 
