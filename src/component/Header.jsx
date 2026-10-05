@@ -173,7 +173,7 @@ function Header() {
                         <li className="icon-content">
                             <a
                                 className="web-link"
-                                href="https://portfolio-temurbek.netlify.app/"
+                                href="https://byalisherov.netlify.app/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Portfolio"
