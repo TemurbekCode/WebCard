@@ -186,6 +186,23 @@ function Header() {
                             </a>
                         </li>
 
+                        {/* Hobby */}
+                        <li className="icon-content">
+                            <a
+                                className="web-link"
+                                href="https://pixelvibes.vercel.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="My Hobby"
+                            >
+                                <img
+                                    src="hobby.png"
+                                    className="hobby"
+                                    alt="My Hobby"
+                                />
+                            </a>
+                        </li>
+
                     </ul>
 
                 </div>
