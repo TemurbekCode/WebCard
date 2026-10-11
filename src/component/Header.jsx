@@ -1,273 +1,274 @@
+import { useEffect, useState } from "react";
 import "./Header.css";
 
+/* ---------- Icons (colored, retro style) ---------- */
+const icons = {
+    linkedin: (
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="2" y="2" width="28" height="28" fill="#0a66c2" stroke="#000" />
+            <rect x="7" y="13" width="4" height="12" fill="#fff" />
+            <rect x="7" y="7" width="4" height="4" fill="#fff" />
+            <path d="M14 13h4v2c.8-1.4 2.2-2.3 4.2-2.3 3.4 0 4.8 2.1 4.8 5.6V25h-4v-6c0-1.7-.6-2.7-2-2.7s-3 1-3 3V25h-4z" fill="#fff" />
+        </svg>
+    ),
+    github: (
+        <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path
+                fill="#111"
+                d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+            />
+        </svg>
+    ),
+    instagram: (
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+            <defs>
+                <linearGradient id="rt-ig" x1="0" y1="1" x2="1" y2="0">
+                    <stop offset="0" stopColor="#fdb44b" />
+                    <stop offset=".5" stopColor="#e1306c" />
+                    <stop offset="1" stopColor="#7b3fd6" />
+                </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="28" height="28" rx="7" fill="url(#rt-ig)" stroke="#000" />
+            <circle cx="16" cy="16" r="6" fill="none" stroke="#fff" strokeWidth="2.4" />
+            <circle cx="23" cy="9" r="1.7" fill="#fff" />
+        </svg>
+    ),
+    tiktok: (
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="2" y="2" width="28" height="28" fill="#111" stroke="#000" />
+            <path d="M18 7v12.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="#25f4ee" strokeWidth="3" transform="translate(-1.2 .8)" />
+            <path d="M18 7v12.5a3.5 3.5 0 1 1-3.5-3.5" fill="none" stroke="#fe2c55" strokeWidth="3" transform="translate(1.2 -.8)" />
+            <path d="M18 7v12.5a3.5 3.5 0 1 1-3.5-3.5M18 7c.4 2.6 2.4 4.4 5.2 4.6" fill="none" stroke="#fff" strokeWidth="3" />
+        </svg>
+    ),
+    telegram: (
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" fill="#2aabee" stroke="#000" />
+            <path d="M7 15.6l15.5-6c.7-.3 1.3.2 1.1 1.1L21 22.4c-.2.8-.7 1-1.4.6l-4-2.9-1.9 1.9c-.2.2-.4.4-.8.4l.3-4.1 7.4-6.7c.3-.3-.1-.4-.5-.2l-9.2 5.8-4-1.2c-.9-.3-.9-.9.2-1.3z" fill="#fff" />
+        </svg>
+    ),
+    whatsapp: (
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 3a13 13 0 0 0-11 19.8L3.2 29l6.4-1.7A13 13 0 1 0 16 3z" fill="#25d366" stroke="#000" />
+            <path d="M11.2 9.5c.5-.4 1.2-.3 1.5.3l1 2.2c.2.4.1.8-.2 1.1l-.8.9c.9 1.7 2.3 3 4.1 3.9l1-1c.3-.3.7-.4 1.1-.2l2.2 1c.6.3.8 1 .4 1.5-.8 1.2-2 1.9-3.4 1.7-4.3-.6-8-4.2-8.6-8.5-.2-1.3.4-2.4 1.7-2.9z" fill="#fff" />
+        </svg>
+    ),
+    website: (
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+            <circle cx="16" cy="16" r="13" fill="#4aa3e8" />
+            <path d="M9 9c3 0 4 2 6 2s2 3 0 4-1 3-3 4-1 4-3 3-4-5-4-8 1-5 4-5z" fill="#3fa34d" />
+            <path d="M20 6c2 0 4 2 4 4s-2 2-3 4-1 4-3 5-2-3-1-5 0-3 0-5 1-3 3-3z" fill="#3fa34d" />
+            <circle cx="16" cy="16" r="13" fill="none" stroke="#000" />
+        </svg>
+    ),
+    hobby: (
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path d="M16 3C8.8 3 3 8.4 3 15c0 6.2 5 11 10.5 11 2 0 2.5-1.4 1.6-2.7-1-1.5-.2-3.3 1.8-3.3H22c3.9 0 7-2.4 7-6C29 8 23.5 3 16 3z" fill="#e8c27a" stroke="#000" />
+            <circle cx="9.5" cy="14" r="2" fill="#e22" />
+            <circle cx="14" cy="9" r="2" fill="#2a5" />
+            <circle cx="20.5" cy="9.5" r="2" fill="#26d" />
+            <circle cx="24" cy="15" r="2" fill="#f2c200" />
+        </svg>
+    ),
+};
+
+/* ---------- Data ---------- */
+const LINKS = [
+    { id: "linkedin", label: "LinkedIn", href: "https://www.linkedin.com/in/temurbek-alisherov-42a5b23b3" },
+    { id: "github", label: "GitHub", href: "https://github.com/TemurbekCode" },
+    { id: "instagram", label: "Instagram", href: "https://www.instagram.com/talshrv" },
+    { id: "tiktok", label: "TikTok", href: "https://www.tiktok.com/@alshrvt?_r=1&_t=ZS-99dZq5ftVaS" },
+    { id: "telegram", label: "Telegram", href: "https://t.me/talshrvy" },
+    // TODO: replace YOUR_PHONE_NUMBER (digits only, with country code, e.g. 998901234567)
+    { id: "whatsapp", label: "WhatsApp", href: "https://wa.me/YOUR_PHONE_NUMBER" },
+    { id: "website", label: "Website", href: "https://byalisherov.netlify.app/" },
+    { id: "hobby", label: "Hobbies", href: "https://pixelvibes.vercel.app/" },
+];
+
+const EMAIL = "temurbekalisherov82@gmail.com";
+
 function Header() {
+    const [now, setNow] = useState(() => new Date());
+    const [minimized, setMinimized] = useState(false);
+    const [dialogOpen, setDialogOpen] = useState(false);
+
+    // live clock
+    useEffect(() => {
+        const id = setInterval(() => setNow(new Date()), 1000);
+        return () => clearInterval(id);
+    }, []);
+
+    // Escape closes the dialog
+    useEffect(() => {
+        if (!dialogOpen) return;
+        const onKey = (e) => e.key === "Escape" && setDialogOpen(false);
+        document.addEventListener("keydown", onKey);
+        return () => document.removeEventListener("keydown", onKey);
+    }, [dialogOpen]);
+
+    const time = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    const date = now.toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short" });
+
     return (
-        <header className="header">
-
-            {/* Background decorations */}
-            <div className="bg-glow bg-glow-1"></div>
-            <div className="bg-glow bg-glow-2"></div>
-            <div className="grid-overlay"></div>
-
-            <main className="profile-card">
-
-                {/* Profile */}
-                <div className="profile-wrapper">
-                    <div className="profile-ring">
-                        <img
-                            src="profile.jpg"
-                            className="imgM"
-                            alt="Temur Alisherov"
-                        />
-                    </div>
-
-                    <span className="online-dot"></span>
-                </div>
-
-                {/* Name */}
-                <h1 className="name">
-                    Temur Alisherov
-                </h1>
-
-                <p className="role">
-                    Software Developer <span>•</span>  Builder
-                </p>
-
-                {/* Socials */}
-                <div className="socials">
-
-                    {/* Row 1 */}
-                    <ul className="social-row">
-
-                        {/* LinkedIn */}
-                        <li className="icon-content">
-                            <a
-                                data-social="linkedin"
-                                aria-label="LinkedIn"
-                                href="https://www.linkedin.com/in/temurbek-alisherov-42a5b23b3"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.68H9.35V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V8.99h3.56v11.46zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z" />
-                                </svg>
-                            </a>
-                        </li>
-
-                        {/* GitHub */}
-                        <li className="icon-content">
-                            <a
-                                data-social="github"
-                                aria-label="GitHub"
-                                href="https://github.com/TemurbekCode"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.15c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.67 1.25 3.32.96.1-.74.4-1.25.73-1.54-2.55-.29-5.23-1.27-5.23-5.67 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.45.11-3.02 0 0 .96-.31 3.15 1.17.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.19-1.48 3.15-1.17 3.15-1.17.62 1.57.23 2.73.11 3.02.73.8 1.18 1.82 1.18 3.07 0 4.41-2.69 5.38-5.25 5.67.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z" />
-                                </svg>
-                            </a>
-                        </li>
-
-                        {/* Instagram */}
-                        <li className="icon-content">
-                            <a
-                                data-social="instagram"
-                                aria-label="Instagram"
-                                href="https://www.instagram.com/talshrv"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="1.8"
-                                >
-                                    <rect
-                                        x="3"
-                                        y="3"
-                                        width="18"
-                                        height="18"
-                                        rx="5"
-                                    />
-
-                                    <circle
-                                        cx="12"
-                                        cy="12"
-                                        r="4"
-                                    />
-
-                                    <circle
-                                        cx="17.5"
-                                        cy="6.5"
-                                        r="1"
-                                        fill="currentColor"
-                                        stroke="none"
-                                    />
-                                </svg>
-                            </a>
-                        </li>
-
-                        {/* Tik Tok */}
-                        <li class="icon-content">
-                            <a href="https://www.tiktok.com/@alshrvt?_r=1&_t=ZS-99dZq5ftVaS" target="_blank" rel="noopener noreferrer" data-social="tiktok">
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.6 5.82c-1.02-.9-1.66-2.2-1.66-3.64h-3.4v13.7c0 1.68-1.36 3.04-3.04 3.04a3.04 3.04 0 0 1-3.04-3.04 3.04 3.04 0 0 1 3.04-3.04c.32 0 .62.05.9.13v-3.44a6.4 6.4 0 0 0-.9-.06A6.46 6.46 0 0 0 2 15.9 6.46 6.46 0 0 0 8.46 22.4 6.46 6.46 0 0 0 14.9 15.9V9.13a8.4 8.4 0 0 0 4.9 1.57V7.3a5 5 0 0 1-3.2-1.48z" /></svg>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                    {/* Row 2 */}
-                    <ul className="social-row">
-
-                        {/* Telegram */}
-                        <li className="icon-content">
-                            <a
-                                data-social="telegram"
-                                aria-label="Telegram"
-                                href="https://t.me/talshrvy"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path d="M21.8 3.1 2.9 10.4c-1.29.52-1.28 1.24-.23 1.56l4.85 1.51 1.86 5.68c.23.63.12.88.78.88.51 0 .73-.23.99-.5l2.36-2.29 4.91 3.63c.9.5 1.55.24 1.78-.84l3.22-15.18c.34-1.33-.51-1.93-1.61-1.49zM8.27 13.14l10.95-6.9c.55-.33 1.05-.15.64.21l-8.86 7.99-.34 3.63-1.77-4.93-4.64-1.45 4.02-1.55z" />
-                                </svg>
-                            </a>
-                        </li>
-
-                        {/* WhatsApp */}
-                        <li className="icon-content">
-                            <a
-                                data-social="whatsapp"
-                                aria-label="WhatsApp"
-                                href="https://wa.me/YOUR_PHONE_NUMBER"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <svg
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="1.8"
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                >
-                                    <path d="M20.5 3.5A11.3 11.3 0 0 0 12.1 0C5.9 0 0.9 5 0.9 11.2c0 2 .5 4 1.5 5.7L.8 23.8l7-1.8a11.2 11.2 0 0 0 4.3.9h.1c6.2 0 11.2-5 11.2-11.2 0-3-1.1-6-2.9-8.2z" />
-
-                                    <path d="M8.2 6.8c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.8 1.9c.1.3.1.5-.1.7l-.7.8c-.1.1-.1.3 0 .5.5.9 1.2 1.6 2 2.1.2.1.4.2.5 0l.8-.9c.2-.2.4-.2.7-.1l1.8.9c.3.1.4.3.4.6 0 .8-.4 1.5-.9 1.8-.5.3-1.2.4-2 .2-1.1-.3-2.5-1-3.8-2.2-1.3-1.2-2.2-2.6-2.5-3.7-.3-1-.2-1.8.2-2.5.2-.4.6-.7 1.1-.7z" />
-                                </svg>
-                            </a>
-                        </li>
-
-                        {/* Portfolio */}
-                        <li className="icon-content">
-                            <a
-                                className="web-link"
-                                href="https://byalisherov.netlify.app/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Portfolio"
-                            >
-                                <img
-                                    src="web.png"
-                                    className="globe"
-                                    alt="Portfolio"
-                                />
-                            </a>
-                        </li>
-
-                        {/* Hobby */}
-                        <li className="icon-content">
-                            <a
-                                className="web-link"
-                                href="https://pixelvibes.vercel.app/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="My Hobby"
-                            >
-                                <img
-                                    src="hobby.png"
-                                    className="hobby"
-                                    alt="My Hobby"
-                                />
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                {/* Contact */}
-                <div className="contactt">
-                    <a
-                        href="mailto:temurbekalisherov82@gmail.com"
-                        className="contact"
+        <header className="rt-desktop">
+            <main
+                className={`rt-window${minimized ? " is-min" : ""}`}
+                aria-label="Temur Alisherov profile card"
+            >
+                {/* Title bar */}
+                <div className="rt-titlebar">
+                    <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+                        <rect x="1" y="2" width="14" height="12" fill="#c0c0c0" stroke="#000" />
+                        <rect x="2" y="3" width="12" height="3" fill="#000080" />
+                        <rect x="3" y="8" width="6" height="1" fill="#000" />
+                        <rect x="3" y="10" width="9" height="1" fill="#000" />
+                    </svg>
+                    <span className="rt-title">temur.exe</span>
+                    <button
+                        type="button"
+                        className="rt-tbtn"
+                        aria-label="Minimize"
+                        onClick={() => setMinimized((v) => !v)}
                     >
-                        <span>Let's Connect</span>
+                        _
+                    </button>
+                    <button type="button" className="rt-tbtn" aria-label="Maximize" tabIndex={-1}>
+                        &#9633;
+                    </button>
+                    <button
+                        type="button"
+                        className="rt-tbtn"
+                        aria-label="Close"
+                        onClick={() => setDialogOpen(true)}
+                    >
+                        &#215;
+                    </button>
+                </div>
 
-                        {/* Mail icon */}
-                        <svg
-                            className="contact-icon"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="1.8"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <rect
-                                x="3"
-                                y="5"
-                                width="18"
-                                height="14"
-                                rx="2"
-                            />
+                <div className="rt-menubar" aria-hidden="true">
+                    <span>File</span>
+                    <span>Edit</span>
+                    <span>View</span>
+                    <span>Help</span>
+                </div>
 
-                            <path d="m3 7 9 6 9-6" />
+                <div className="rt-body">
+                    {/* Profile */}
+                    <section className="rt-profile rt-sunken">
+                        <div className="rt-photo rt-raised">
+                            <img src="/image.png" alt="Temur Alisherov" />
+                        </div>
+                        <div className="rt-who">
+                            <h1>Temur Alisherov</h1>
+                            <p>Software developer and builder</p>
+                        </div>
+                    </section>
+
+                    {/* Links */}
+                    <fieldset className="rt-group">
+                        <legend>Find me on</legend>
+                        <nav className="rt-icons" aria-label="Links">
+                            {LINKS.map(({ id, label, href }) => (
+                                <a
+                                    key={id}
+                                    className="rt-icon"
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    <span className="rt-glyph">{icons[id]}</span>
+                                    <span className="rt-label">{label}</span>
+                                </a>
+                            ))}
+                        </nav>
+                    </fieldset>
+
+                    {/* Contact */}
+                    <a className="rt-mail rt-raised" href={`mailto:${EMAIL}`}>
+                        <svg width="20" height="16" viewBox="0 0 20 16" aria-hidden="true">
+                            <rect x=".5" y=".5" width="19" height="15" fill="#fff" stroke="#000" />
+                            <path d="M1 1l9 8 9-8" fill="none" stroke="#000" />
                         </svg>
-
-                        <svg
-                            className="arrow-icon"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M5 12h14" />
-                            <path d="m13 6 6 6-6 6" />
-                        </svg>
+                        Send mail.exe
                     </a>
+
+                    {/* Quote */}
+                    <section className="rt-note rt-sunken" aria-label="Quote">
+                        <div className="rt-np-title">note.txt</div>
+                        <p className="rt-np-body">
+                            Don't rely on AI. Build your own skills.
+                            <span className="rt-caret" aria-hidden="true" />
+                        </p>
+                    </section>
+
+                    {/* Status bar */}
+                    <div className="rt-status">
+                        <div className="rt-cell">
+                            <span className="rt-dot" aria-hidden="true" />
+                            Available for opportunities
+                        </div>
+                        <div className="rt-cell rt-cell-small" aria-hidden="true">
+                            {date}
+                        </div>
+                    </div>
                 </div>
-
-                {/* Divider */}
-                <div className="divider">
-                    <span></span>
-                </div>
-
-                {/* Quote */}
-                <p className="p-head">
-                    "Don't rely on AI — build your own skills."
-                </p>
-
-                <div className="bottom-label">
-                    <span className="status-dot"></span>
-                    Available for opportunities
-                </div>
-
             </main>
 
+            {/* Taskbar */}
+            <div className="rt-taskbar">
+                <button
+                    type="button"
+                    className="rt-start rt-raised"
+                    onClick={() => setMinimized(false)}
+                >
+                    <svg width="16" height="14" viewBox="0 0 16 14" aria-hidden="true">
+                        <rect x="0" y="1" width="7" height="6" fill="#f25022" />
+                        <rect x="8" y="0" width="7" height="6" fill="#7fba00" />
+                        <rect x="0" y="8" width="7" height="6" fill="#00a4ef" />
+                        <rect x="8" y="7" width="7" height="6" fill="#ffb900" />
+                    </svg>
+                    Start
+                </button>
+                <div className="rt-task">
+                    <span aria-hidden="true">&#9638;</span> temur.exe
+                </div>
+                <time className="rt-tray" dateTime={now.toISOString()}>
+                    {time}
+                </time>
+            </div>
+
+            {/* Error dialog */}
+            {dialogOpen && (
+                <div className="rt-overlay" role="alertdialog" aria-modal="true" aria-labelledby="rt-dlg-title">
+                    <div className="rt-dialog rt-raised">
+                        <div className="rt-titlebar">
+                            <span className="rt-title" id="rt-dlg-title">Error</span>
+                            <button
+                                type="button"
+                                className="rt-tbtn"
+                                aria-label="Close dialog"
+                                onClick={() => setDialogOpen(false)}
+                            >
+                                &#215;
+                            </button>
+                        </div>
+                        <div className="rt-msg">
+                            <div className="rt-err" aria-hidden="true">&#215;</div>
+                            <p>temur.exe cannot be closed. It is still available for opportunities.</p>
+                        </div>
+                        <div className="rt-actions">
+                            <button
+                                type="button"
+                                className="rt-ok rt-raised"
+                                autoFocus
+                                onClick={() => setDialogOpen(false)}
+                            >
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
         </header>
     );
 }
