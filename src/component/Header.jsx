@@ -130,10 +130,10 @@ function Header() {
                         aria-label="Minimize"
                         onClick={() => setMinimized((v) => !v)}
                     >
-                        _
+                        -
                     </button>
                     <button type="button" className="rt-tbtn" aria-label="Maximize" tabIndex={-1}>
-                        &#9633;
+                        &#9634;
                     </button>
                     <button
                         type="button"
