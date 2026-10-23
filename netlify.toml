@@ -1,3 +1,4 @@
 ﻿[build]
+  base = "business-web-card"
   publish = "dist"
   command = "npm run build"
